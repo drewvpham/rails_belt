@@ -1,0 +1,22 @@
+<%=link_to 'Bright Ideas', ideas_path%>
+<a class="float_right" data-method="delete" href="/sessions/<%= session[:user_id] %>">Logout</a>
+<p><%=@idea.user.first_name%> says: <%=@idea.content%></p>
+
+
+<p>People who liked this post:</p>
+
+<table>
+  <tr>
+    <th>Alias</th>
+    <th>Name</th>
+  </tr>
+<%@idea.users_liked.reverse.each do |user|%>
+
+  <tr>
+    <td><%= link_to user.alias, user_path(user) %></td>
+    <td><%= user.first_name %> <%=user.last_name %></td>
+
+  </tr>
+    <%end%>
+
+</table>

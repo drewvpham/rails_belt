@@ -1,0 +1,46 @@
+
+<h3>Register</h3>
+<%= form_tag users_path do %>
+  <label>First Name:</label><br>
+  <%= text_field_tag :'user[first_name]' %><br>
+
+  <label>Last Name:</label><br>
+  <%= text_field_tag :'user[last_name]' %><br>
+
+  <label>Alias:</label><br>
+  <%= text_field_tag :'user[alias]' %><br>
+
+  <label>Email:</label><br>
+  <%= text_field_tag :'user[email]' %><br>
+
+  <label>Password:</label><br>
+  <%= password_field_tag :'user[password]' %><br>
+
+  <label>Password Confirmation:</label><br>
+  <%= password_field_tag :'user[password_confirmation]' %><br>
+
+  <%= submit_tag "Register" %>
+<% end %>
+
+
+
+  <% if flash[:errors]%>
+      <%flash[:errors].each do |error|%>
+      <p><%=error%></p>
+    <%end%>
+  <%end%>
+
+  <h3>Login</h3>
+     <form action='/sessions' method='post'>
+       <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+       <div>
+         <label>Email</label>
+         <input type='text' name='user[email]'>
+       </div>
+       <div>
+         <label>Password</label>
+         <input type='password' name='user[password]'>
+       </div>
+       <input type='submit' value='Login'>
+     </form>
+  <p class='errors'><%= flash[:login_error]%>

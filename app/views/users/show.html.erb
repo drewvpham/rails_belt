@@ -1,0 +1,8 @@
+<p>Name:<%=@user.first_name%> <%=@user.last_name%> </p>
+<p>Alias:<%=@user.alias%></p>
+<p>Email:<%=@user.email%></p>
+
+<%=link_to 'Bright Ideas', ideas_path%>
+<a class="float_right" data-method="delete" href="/sessions/<%= session[:user_id] %>">Logout</a>
+<p>Total number of posts: <%=@ideas_count%></p>
+<p>Total number of likes: <%=@user.likes.count%></p>
